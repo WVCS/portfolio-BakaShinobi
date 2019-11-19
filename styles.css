@@ -49,7 +49,7 @@ body {
 .float_center {
   float: right;
   position: relative;
-  right: 40%; /* or right 50% */
+  right: 38%; /* or right 50% */
   text-align: center;
 }
 
