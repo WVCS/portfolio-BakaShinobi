@@ -117,14 +117,18 @@ div.desc {
 .img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: 0% 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: 0% 50%;
+     object-position: 0% 50%;
+  transition: -webkit-transform 1s;
   transition: transform 1s;
-
-  .c:hover & {
-    transform: translateX(-3%);
-    transition-duration: 5s;
-  }
+  transition: transform 1s, -webkit-transform 1s;
+}
+.c:hover .img {
+  -webkit-transform: translateX(-3%);
+          transform: translateX(-3%);
+  transition-duration: 5s;
 }
 
 :root {
@@ -133,27 +137,40 @@ div.desc {
   --s3-w: 10vmin;
 }
 
-@keyframes move-x {
+@-webkit-keyframes move-x {
   50% {
-    transform: translateX(var(--x1));
+    -webkit-transform: translateX(var(--x1));
+            transform: translateX(var(--x1));
   }
   100% {
-    transform: translateX(var(--x2));
+    -webkit-transform: translateX(var(--x2));
+            transform: translateX(var(--x2));
   }
 }
 
-.s1,
-.s2,
-.s3 {
+@keyframes move-x {
+  50% {
+    -webkit-transform: translateX(var(--x1));
+            transform: translateX(var(--x1));
+  }
+  100% {
+    -webkit-transform: translateX(var(--x2));
+            transform: translateX(var(--x2));
+  }
+}
+.s1, .s2, .s3 {
   position: absolute;
   top: 0;
   bottom: 0;
-  animation: gg .5s ease-out forwards;
+  -webkit-animation: gg .5s ease-out forwards;
+          animation: gg .5s ease-out forwards;
   pointer-events: none;
-
-  .c:hover & {
-    animation-name: move-x;
-  }
+}
+.c:hover .s1,
+.c:hover .s2,
+.c:hover .s3 {
+  -webkit-animation-name: move-x;
+          animation-name: move-x;
 }
 
 .s1 {
@@ -162,7 +179,6 @@ div.desc {
   width: var(--s1-w);
   background-color: #fff;
   mix-blend-mode: difference;
-
   --x1: -110vmin;
   --x2: -50vmin;
 }
@@ -172,7 +188,6 @@ div.desc {
   width: calc(var(--s2-w) * 2);
   left: calc(100% + var(--s1-w));
   background-color: #000;
-
   --x1: -110vmin;
   --x2: -90vmin;
 }
@@ -182,14 +197,11 @@ div.desc {
   width: 10vmin;
   right: 100%;
   background-color: #000;
-  animation-delay: .1s;
-
+  -webkit-animation-delay: .1s;
+          animation-delay: .1s;
   --x1: 0;
   --x2: 95%;
 }
-
-
-//////
 
 body {
   display: flex;
@@ -214,9 +226,7 @@ h1 {
   font-style: italic;
   font-family: serif;
   opacity: .75;
-
-  a {
-    color: inherit;
-  }
 }
-
+.info a {
+  color: inherit;
+}
