@@ -78,14 +78,14 @@ div.desc {
   color: white;
 }
 
-@media only screen and (max-width:) {
+@media only screen and (max-width: 1024px) {
   .responsive {
     width: 49.99999%;
     margin: 6px 0;
   }
 }
 
-@media only screen and (max-width: ) {
+@media only screen and (max-width: 768px ) {
   .responsive {
     width: 100%;
   }
